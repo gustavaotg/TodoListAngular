@@ -1,0 +1,36 @@
+<h3>Todo List</h3>
+
+<div id="addTodoContainer">
+    <input 
+    (keyup.enter)="
+    addTodoItem(addTodo.value); 
+    addTodo.value = '';"
+    placeholder="Add todo"
+    #addTodo>
+    
+    <button
+    (click)="
+    addTodoItem(addTodo.value); 
+    addTodo.value = '';">+</button>
+</div>
+<form>
+    <input 
+    name="searchTerm"
+    [(ngModel)]="searchTerm"
+    placeholder="Search for Todos">
+</form>
+
+@if (!todoItems().length) {
+    <p>Loading...</p>
+}
+
+<ul class="todos"> 
+    @for (todo of todoItems() | filterTodos : searchTerm(); track todo.id) {
+        <app-todo-item 
+        (todoToggled)="updateTodoItem($event)" 
+        (removeToggled)="deleteTodoItem($event)"
+        (editToggled)="updateTaskTodoItem($event)"
+        [todo]="todo" 
+        class="todos__item"/>
+    }
+</ul>

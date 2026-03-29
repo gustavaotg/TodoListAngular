@@ -1,0 +1,39 @@
+li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    #leftTodo {
+        max-width: 80%;
+        label {
+            border: none;
+            max-width: 80%;
+            overflow-wrap: break-word;
+        }
+        input:hover {
+            cursor: pointer;
+        }
+        
+    }
+    #rightTodo {
+        width: 60px;
+        svg {
+            width: 30px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        img {
+            width: 21px;
+            height: 30px;
+            object-fit: cover;
+            object-position: 8%;
+            &:hover {
+                cursor: pointer;
+                object-position: 95%;
+            }
+        }
+    }
+}
